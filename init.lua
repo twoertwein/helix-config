@@ -23,6 +23,9 @@ vim.cmd("hi EndOfBuffer guibg=#303030")
 vim.opt.spell = true
 vim.opt.spelllang = { "en" }
 
+-- easily switch to normal mode from terminal mode
+vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]])
+
 -- tools
 vim.diagnostic.config({ virtual_lines = { current_line = true, }})
 vim.lsp.enable { "ruff", "ty" }
