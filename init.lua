@@ -11,7 +11,6 @@ vim.o.smartindent = true
 vim.o.wrap = false
 
 -- colors
-vim.opt.termguicolors = true
 vim.cmd("syntax enable")
 vim.cmd("filetype plugin indent on")
 vim.cmd.colorscheme("desert")
@@ -30,26 +29,20 @@ vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]])
 vim.diagnostic.config({ virtual_lines = { current_line = true, }})
 vim.lsp.enable { "ruff", "ty" }
 
--- run formatters on save
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+-- fix and format
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   pattern = { "*.py" },
   callback = function()
-    -- fix 
+    -- run format (sync) before code_action (async) to avoid interactions
+    -- format
+    vim.lsp.buf.format({ async = false })
+    -- fix
     vim.lsp.buf.code_action({
       context = {
         only = { "source.fixAll.ruff" },
       },
       apply = true,
       })
-    -- organize imports
-    vim.lsp.buf.code_action({
-      context = {
-        only = { "source.organizeImports.ruff" },
-      },
-      apply = true,
-    })
-    -- format
-    vim.lsp.buf.format()
   end,
 })
 

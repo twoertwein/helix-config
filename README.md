@@ -9,6 +9,7 @@ Mostly using builtins (+ruff and ty).
 
 ## Completion
 
-- `Ctrl+x+n` complete a keyword mentioned in the current file
-- `Ctrl+x+f` complete a path
-- `Ctrl+x+s` spell checking suggestions
+- `Ctrl+x+n` keyword completion
+- `Ctrl+x+o` LSP completion
+- `Ctrl+x+f` path completion
+- `Ctrl+x+s` spell checking completion
