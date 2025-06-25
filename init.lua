@@ -8,7 +8,7 @@ vim.o.expandtab = true
 
 -- line behavior
 vim.o.smartindent = true
-vim.o.wrap = false
+vim.o.wrap = true
 
 -- colors
 vim.cmd("syntax enable")
@@ -24,6 +24,11 @@ vim.opt.spelllang = { "en" }
 
 -- easily switch to normal mode from terminal mode
 vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]])
+
+-- run LSP on Ctrl+space
+vim.keymap.set("i", "<c-space>", function()
+  vim.lsp.completion.get()
+end)
 
 -- tools
 vim.diagnostic.config({ virtual_lines = { current_line = true, }})

@@ -10,6 +10,6 @@ Mostly using builtins (+ruff and ty).
 ## Completion
 
 - `Ctrl+x+n` keyword completion
-- `Ctrl+x+o` LSP completion
+- `Ctrl+space` LSP completion
 - `Ctrl+x+f` path completion
 - `Ctrl+x+s` spell checking completion
