@@ -5,12 +5,9 @@ return {
   on_attach = function(client, bufnr)
     -- show type annotations
     vim.lsp.inlay_hint.enable(true, {  bufnr })
-    -- automatically trigger completions
-    vim.lsp.completion.enable(true, client.id, bufnr, {
-      autotrigger = true,
-      convert = function(item)
-        return { abbr = item.label:gsub("%b()", "") }
-      end,
-    })
+    -- automatically trigger completions (on every key press - might be slow!)
+    local chars = {}; for i = 32, 126 do table.insert(chars, string.char(i)) end
+    client.server_capabilities.completionProvider.triggerCharacters = chars
+    vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = true })
   end,
 }
