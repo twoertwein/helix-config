@@ -13,10 +13,8 @@ vim.o.wrap = true
 -- colors
 vim.cmd("syntax enable")
 vim.cmd("filetype plugin indent on")
-vim.cmd.colorscheme("desert")
--- slightly darker background than "desert"
-vim.cmd("hi Normal guibg=#303030")
-vim.cmd("hi EndOfBuffer guibg=#303030")
+vim.o.background = "dark"
+vim.cmd.colorscheme("gruvbox")
 
 -- spell checking 
 vim.opt.spell = true
