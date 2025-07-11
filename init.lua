@@ -12,7 +12,6 @@ vim.o.wrap = true
 
 -- colors
 vim.cmd("syntax enable")
-vim.cmd("filetype plugin indent on")
 vim.o.background = "dark"
 vim.cmd.colorscheme("gruvbox")
 
@@ -23,10 +22,17 @@ vim.opt.spelllang = { "en" }
 -- easily switch to normal mode from terminal mode
 vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]])
 
--- run LSP on Ctrl+space
-vim.keymap.set("i", "<c-space>", function()
-  vim.lsp.completion.get()
-end)
+-- easier to remember completions
+-- ctrl+space for LSP
+vim.keymap.set("i", "<c-Space>", [[<C-x><C-o>]], { noremap = true, silent = true })
+-- ctrl+f for file paths
+vim.keymap.set("i", "<c-f>", [[<C-x><C-f>]], { noremap = true, silent = true })
+-- ctrl+s for spelling
+vim.keymap.set("i", "<c-s>", [[<C-x><C-s>]], { noremap = true, silent = true })
+
+-- same navigation behavior as in other programs (alt+arrows)
+vim.keymap.set("n", "<M-Right>", "w", { noremap = true, silent = true })
+vim.keymap.set("n", "<M-Left>", "b", { noremap = true, silent = true })
 
 -- tools
 vim.diagnostic.config({ virtual_lines = { current_line = true, }})
@@ -50,13 +56,4 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 })
 
 -- completion: do not auto-insert the first hit
-vim.cmd[[set completeopt+=menuone,noselect,popup]]
-
--- show hover information after 2s (default 4s)
-vim.opt.updatetime = 2000
-vim.api.nvim_create_autocmd( { "CursorHold" }, {
-    pattern = {"*.py"},
-    callback = function()
-       vim.lsp.buf.hover()
-    end
-})
+vim.opt.completeopt:append({ 'menuone', 'noselect', 'popup' })
