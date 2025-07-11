@@ -15,7 +15,7 @@ vim.cmd("syntax enable")
 vim.o.background = "dark"
 vim.cmd.colorscheme("gruvbox")
 
--- spell checking 
+-- spell checking
 vim.opt.spell = true
 vim.opt.spelllang = { "en" }
 
@@ -52,6 +52,15 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
       },
       apply = true,
       })
+  end,
+})
+-- remove trailing white spaces
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  pattern = { "*" },
+  callback = function()
+    local save = vim.fn.winsaveview()
+    vim.cmd([[%s/\s\+$//e]])
+    vim.fn.winrestview(save)
   end,
 })
 

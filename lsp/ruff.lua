@@ -11,7 +11,7 @@ return {
                 "C4",  -- flake8-comprehensions
                 "LOG",  -- flake8-logging
                 "RET",  -- flake8-return
-                "SIM",  -- flake8-simplify 
+                "SIM",  -- flake8-simplify
                 "TD",  -- flake8-todos
                 "PTH",  -- flake8-use-pathlib
                 "FLY",  -- flynt
