@@ -1,0 +1,35 @@
+theme = "gruvbox"
+
+[editor]
+true-color = true
+trim-final-newlines = true
+trim-trailing-whitespace = true
+
+[editor.soft-wrap]
+enable = true
+
+[editor.lsp]
+display-inlay-hints = true
+inlay-hints-length-limit = 32
+
+[keys.insert]
+# move
+C-left = "move_prev_word_start"
+C-right = "move_next_word_end"
+
+[keys.normal]
+# edit
+del = "delete_selection"
+backspace = "delete_char_backward"
+tab = "indent"
+S-tab = "unindent"
+# move
+C-left = "move_prev_word_start"
+C-right = "move_next_word_end"
+# select
+C-S-left = "extend_prev_word_start"
+C-S-right = "extend_next_word_start"
+S-down = "extend_line_down"
+S-up = "extend_line_up"
+S-home = "extend_to_line_start"
+S-end = "extend_to_line_end"
