@@ -1,0 +1,5 @@
+inherits = "gruvbox_dark_hard"
+
+[palette]
+# a little bit darker background than in gruvbox_dark_hard (1d2021)
+bg0 = "#0d1011"
