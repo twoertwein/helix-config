@@ -3,11 +3,16 @@ name = "python"
 language-servers = ["ruff", "ty"]
 auto-format = true
 
+# needed for older helix versions
+[language-server.ty]
+command = "ty"
+args = ["server"]
+
 [language-server.ruff.config.settings]
 fix = true
 
 [language-server.ruff.config.settings.lint]
-extend-select = [
+extendSelect = [
     "ASYNC",  # flake8-async
     "B",  # flake8-bugbear
     "A",  # flake8-builtins
@@ -15,7 +20,6 @@ extend-select = [
     "LOG",  # flake8-logging
     "RET",  # flake8-return
     "SIM",  # flake8-simplify
-    "TD",  # flake8-todos
     "PTH",  # flake8-use-pathlib
     "FLY",  # flynt
     "I",  # isort
@@ -27,5 +31,4 @@ extend-select = [
     "UP",  # pyupgrade
     "FURB",  # refurb
     "RUF",  # ruff
-    "TRY"  # tryceratops
 ]
