@@ -1,7 +1,8 @@
 theme = "gruvbox_darker_hard"
 
 [editor]
-auto-pair = false
+cursorline = true
+auto-pairs = false
 true-color = true
 trim-final-newlines = true
 trim-trailing-whitespace = true
